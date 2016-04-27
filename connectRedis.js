@@ -1,6 +1,6 @@
 var redis = require('redis');
 
-client = redis.createClient(6379, 'localhost', {});
+client = redis.createClient(6379, 'localhost');
 
 //验证
 //client.auth(password, callback);
