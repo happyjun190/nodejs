@@ -12,6 +12,7 @@ var redis = new Redis({
 // 把 db 塞到字符串裏面的 {db} 裏去
 var subscribeKey =  '__keyevent@{db}__:expired'.assign({ db: 1 });
 
+console.log(subscribeKey);
 
 redis.once('connect', function(){
     // 假設我們需要選擇 redis 的 db，因爲實際上我們不會去污染默認的 db 0
@@ -19,7 +20,7 @@ redis.once('connect', function(){
 	if(err) {
 	    process.exit(4);
 	};
-	redis.subscribe('foo', function(){
+	redis.subscribe(subscribeKey, function(){
 	    console.log('订阅频道成功!');
 	});
     });
